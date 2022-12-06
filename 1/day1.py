@@ -1,8 +1,8 @@
 from pathlib import Path
 
-
+DATA = Path(__file__).parent / "data.txt"
 def find_top_calories() -> int:
-    calories = Path("data.txt").read_text().splitlines()
+    calories = DATA.read_text().splitlines()
 
     current_total: int = 0
     elves_calories: set[int] = set()
@@ -16,7 +16,7 @@ def find_top_calories() -> int:
 
 
 def find_topk_calories() -> int:
-    calories = Path("data.txt").read_text().splitlines()
+    calories = DATA.read_text().splitlines()
 
     k: int = 3
     current_total: int = 0
