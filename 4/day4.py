@@ -19,7 +19,7 @@ def find_overlaps() -> int:
         if int(first_start) <= int(second_start) and int(first_end) >= int(second_end):
             overlap = True
 
-        overlaps += int(overlap)
+        overlaps += overlap
     return overlaps
 
 
