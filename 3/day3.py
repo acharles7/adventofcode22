@@ -13,11 +13,7 @@ def find_priorities() -> int:
     for rucksack in rucksacks:
         n = len(rucksack) // 2
         first_comp, second_comp = rucksack[:n], rucksack[n:]
-        assert len(first_comp) == len(second_comp)
-
-        first_comp_items = set(first_comp)
-        second_comp_items = set(second_comp)
-        common_item = set.intersection(first_comp_items, second_comp_items).pop()
+        common_item = set.intersection(set(first_comp), set(second_comp)).pop()
         priorities += PRIORITIES[common_item]
     return priorities
 
@@ -26,12 +22,8 @@ def find_priorities2() -> int:
     rucksacks = DATA.read_text().splitlines()
     priorities: int = 0
 
-    for group in range(-1, len(rucksacks)-2, 3):
-        first_elf = set(rucksacks[group+1])
-        second_elf = set(rucksacks[group+2])
-        third_elf = set(rucksacks[group+3])
-
-        common_item = set.intersection(first_elf, second_elf, third_elf).pop()
+    for group in range(0, len(rucksacks)-1, 3):
+        common_item = set.intersection(set(rucksacks[group]), set(rucksacks[group+1]), set(rucksacks[group+2])).pop()
         priorities += PRIORITIES[common_item]
     return priorities
 
